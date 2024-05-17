@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import {
-  DesktopOutlined,
-  DownOutlined,
   FileOutlined,
   LogoutOutlined,
-  PieChartOutlined,
   SmileOutlined,
   TeamOutlined,
   UserOutlined,
@@ -12,6 +9,7 @@ import {
 import type { MenuProps } from "antd";
 import { Breadcrumb, Layout, Menu, theme, Dropdown } from "antd";
 import logo from "../assets/logo.png";
+import { useNavigate } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -29,10 +27,6 @@ function getItem(
     children,
     label,
   } as MenuItem;
-}
-
-function onSideItemClick(info: MenuInfo) {
-  console.log(info);
 }
 
 const sideItems: MenuItem[] = [
@@ -83,6 +77,12 @@ const MyLayout: React.FC = () => {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
 
+  const navigate = useNavigate();
+  function onSideItemClick(e: any) {
+    console.log(e);
+    navigate(e.key);
+  }
+
   return (
     <Layout style={{ minHeight: "100vh", width: "100vw" }}>
       <Sider
@@ -98,8 +98,8 @@ const MyLayout: React.FC = () => {
           defaultSelectedKeys={["user"]}
           mode="inline"
           items={sideItems}
-          onClick={(item, key, keyPath, domEvent) => {
-            onSideItemClick(key);
+          onClick={(e) => {
+            onSideItemClick(e);
           }}
         />
       </Sider>

@@ -1,7 +1,7 @@
 export default function Tom() {
   return (
     <>
-      <div>This is tom. </div>
+      <div>this is tom </div>
     </>
   );
 }

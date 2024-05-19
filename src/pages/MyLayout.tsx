@@ -9,7 +9,7 @@ import {
 import type { MenuProps } from "antd";
 import { Breadcrumb, Layout, Menu, theme, Dropdown } from "antd";
 import logo from "../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -41,28 +41,16 @@ const sideItems: MenuItem[] = [
   getItem("Files", "9", <FileOutlined />),
 ];
 
-const items: MenuProps["items"] = [
+const items = [
   {
     key: "1",
-    label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.antgroup.com"
-      >
-        个人中心
-      </a>
-    ),
+    label: <Link to>个人中心</Link>,
     icon: <SmileOutlined />,
   },
   {
     key: "2",
     label: (
-      <a
-        target="_blank"
-        rel="noopener noreferrer"
-        href="https://www.aliyun.com"
-      >
+      <a target="_blank" rel="noopener noreferrer">
         退出登录
       </a>
     ),
@@ -118,16 +106,8 @@ const MyLayout: React.FC = () => {
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
           </Breadcrumb>
-          <div
-            style={{
-              padding: 24,
-              minHeight: 460,
-              background: colorBgContainer,
-              borderRadius: borderRadiusLG,
-            }}
-          >
-            Bill is a cat.
-          </div>
+
+          <Outlet />
         </Content>
         <Footer style={{ textAlign: "center" }}>
           Ant Design ©{new Date().getFullYear()} Created by Ant UED

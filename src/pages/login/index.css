@@ -1,0 +1,15 @@
+.login-logo {
+    width: 200px;
+    display: block;
+    margin: 0 auto;
+}
+
+.login-container {
+    width: 440px;
+    display: block;
+    /* margin: auto; */
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    box-shadow: gray;
+}
